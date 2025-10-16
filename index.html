@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="Giới thiệu trang web mới — nhanh, đẹp và sẵn sàng để chia sẻ." />
+  <title>Giới thiệu — Trang web mới</title>
+
+  <!-- Styles: đơn file để dán nhanh -->
+  <style>
+    :root{
+      --bg:#0f1724; --card:#0b1220; --muted:#9aa4b2; --accent:#06b6d4;
+      --glass: rgba(255,255,255,0.04);
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0; background:linear-gradient(180deg,#071029 0%, #0b1220 100%); color:#e6eef6;
+      -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
+    }
+    .container{max-width:1100px;margin:40px auto;padding:24px;}
+    .hero{
+      display:grid; grid-template-columns: 1fr 420px; gap:28px; align-items:center;
+      background:linear-gradient(135deg, rgba(6,182,212,0.06), transparent);
+      padding:28px; border-radius:12px; box-shadow:0 6px 30px rgba(2,6,23,0.6);
+      backdrop-filter: blur(6px);
+    }
+    h1{margin:0 0 8px;font-size:32px;line-height:1.05}
+    p.lead{margin:0;color:var(--muted)}
+    .btns{margin-top:18px}
+    .btn{display:inline-block;padding:10px 16px;border-radius:8px;text-decoration:none;color:#07203a;font-weight:600}
+    .btn-primary{background:var(--accent);box-shadow:0 6px 18px rgba(6,182,212,0.12)}
+    .btn-ghost{background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--muted)}
+    .card{background:var(--card);padding:18px;border-radius:10px}
+    .screenshot{
+      height:320px;border-radius:8px;background:
+      linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.2));
+      display:flex;align-items:center;justify-content:center;color:var(--muted);
+      border:1px solid rgba(255,255,255,0.02);
+      font-size:14px;
+    }
+    .features{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:18px}
+    .feature{padding:12px;border-radius:8px;background:var(--glass);text-align:center}
+    .feature h4{margin:6px 0;color:#e6eef6}
+    footer{margin-top:20px;color:var(--muted);font-size:13px;text-align:center}
+
+    /* responsive */
+    @media (max-width:880px){
+      .hero{grid-template-columns:1fr; padding:18px}
+      .screenshot{height:220px}
+      .features{grid-template-columns:repeat(2,1fr)}
+    }
+    @media (max-width:520px){ .features{grid-template-columns:1fr} h1{font-size:24px} }
+    /* small utilities */
+    .muted{color:var(--muted)}
+    .share{margin-left:8px;padding:8px 10px;border-radius:8px;background:rgba(255,255,255,0.02);color:var(--muted);border:1px solid rgba(255,255,255,0.02)}
+    input,textarea{width:100%;padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:inherit}
+    .form-row{display:flex;gap:10px}
+    .form-row > *{flex:1}
+    .small{font-size:13px;color:var(--muted);margin-top:8px}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="hero" role="region" aria-label="Giới thiệu trang web mới">
+      <div>
+        <h1>Tên Trang Web <span class="muted">— ra mắt</span></h1>
+        <p class="lead">Chào mừng bạn đến với trang web mới được thiết kế để giới thiệu dịch vụ, sản phẩm và kết nối với khách hàng. Nhanh, đẹp và sẵn sàng để xuất bản.</p>
+
+        <div class="btns">
+          <a id="openSite" class="btn btn-primary" href="#" target="_blank" rel="noopener">Mở trang</a>
+          <button id="copyLink" class="share" title="Sao chép liên kết">Sao chép liên kết</button>
+          <a id="github" class="btn btn-ghost" href="#" target="_blank" rel="noopener">Xem mã nguồn</a>
+        </div>
+
+        <div class="card" style="margin-top:18px">
+          <strong>Thông tin nhanh</strong>
+          <div class="small">
+            - Tên: Trang Web Mẫu<br>
+            - Mục tiêu: Giới thiệu & liên hệ<br>
+            - Trạng thái: Sẵn sàng xuất bản
+          </div>
+
+          <div class="features" style="margin-top:12px">
+            <div class="feature">
+              <div style="font-size:20px">⚡</div>
+              <h4>Hiệu năng</h4>
+              <div class="muted">Tải nhanh, tối ưu</div>
+            </div>
+            <div class="feature">
+              <div style="font-size:20px">🎨</div>
+              <h4>Giao diện</h4>
+              <div class="muted">Đẹp & Responsive</div>
+            </div>
+            <div class="feature">
+              <div style="font-size:20px">🔗</div>
+              <h4>Chia sẻ</h4>
+              <div class="muted">Liên kết, mạng xã hội</div>
+            </div>
+          </div>
+        </div>
+
+        <div style="margin-top:14px" class="card">
+          <strong>Liên hệ nhanh</strong>
+          <form id="contactForm" onsubmit="return sendContact(event)" novalidate>
+            <div class="form-row" style="margin-top:10px">
+              <input id="name" placeholder="Tên của bạn" required />
+              <input id="email" placeholder="Email" type="email" required />
+            </div>
+            <div style="margin-top:10px">
+              <textarea id="message" rows="4" placeholder="Tin nhắn..." required></textarea>
+            </div>
+            <div style="margin-top:10px;display:flex;gap:10px">
+              <button type="submit" class="btn btn-primary">Gửi</button>
+              <button type="button" class="btn btn-ghost" onclick="resetForm()">Xóa</button>
+            </div>
+            <div id="formStatus" class="small" aria-live="polite"></div>
+          </form>
+        </div>
+
+      </div>
+
+      <aside>
+        <div class="screenshot card" aria-hidden="false">
+          <div style="text-align:center">
+            <div style="font-weight:600">Ảnh demo / ảnh bìa</div>
+            <div class="muted" style="margin-top:8px">Thay bằng ảnh chụp màn hình hoặc GIF</div>
+          </div>
+        </div>
+
+        <div class="card" style="margin-top:12px;text-align:center">
+          <strong>Kết nối</strong>
+          <div class="small" style="margin-top:8px">
+            <a href="#" style="color:var(--accent);text-decoration:none">Twitter</a> ·
+            <a href="#" style="color:var(--accent);text-decoration:none">Facebook</a> ·
+            <a href="#" style="color:var(--accent);text-decoration:none">LinkedIn</a>
+          </div>
+        </div>
+      </aside>
+    </div>
+
+    <footer>
+      © <span id="year"></span> Tên Trang Web • Thiết kế mẫu — Tùy chỉnh theo nhu cầu của bạn.
+    </footer>
+  </div>
+
+  <!-- JS nhỏ để tương tác -->
+  <script>
+    // Cấu hình nhanh: thay đổi link trang chính và link mã nguồn
+    const siteUrl = "https://example.com"; // <- đổi thành link trang của bạn
+    const sourceUrl = "https://github.com/your/repo"; // <- đổi nếu có
+
+    document.getElementById('openSite').href = siteUrl;
+    document.getElementById('github').href = sourceUrl;
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Sao chép liên kết
+    document.getElementById('copyLink').addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText(siteUrl);
+        showTemp("Đã sao chép liên kết vào clipboard.");
+      } catch (e) {
+        showTemp("Không thể sao chép tự động. Hãy sao chép thủ công: " + siteUrl);
+      }
+    });
+
+    function showTemp(text){
+      const s = document.getElementById('formStatus');
+      s.textContent = text;
+      setTimeout(()=>{ if(s.textContent === text) s.textContent = ""; }, 3500);
+    }
+
+    // Form liên hệ: gửi bằng mailto (không cần backend) hoặc hiển thị JSON để copy
+    function sendContact(e){
+      e.preventDefault();
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const message = document.getElementById('message').value.trim();
+      if(!name || !email || !message){
+        showTemp("Vui lòng điền đầy đủ thông tin.");
+        return false;
+      }
+
+      // Tùy chọn 1: mở mail client
+      const subject = encodeURIComponent("Liên hệ từ " + name);
+      const body = encodeURIComponent("Tên: " + name + "\\nEmail: " + email + "\\n\\n" + message);
+      window.location.href = "mailto:hello@example.com?subject=" + subject + "&body=" + body;
+
+      // Tùy chọn 2: nếu muốn, hiển thị JSON để copy (thay backend)
+      // const payload = {name, email, message, site: siteUrl, date: new Date().toISOString()};
+      // showTemp("Dữ liệu liên hệ (copy): " + JSON.stringify(payload));
+      return false;
+    }
+
+    function resetForm(){
+      document.getElementById('contactForm').reset();
+      showTemp("Đã xóa form.");
+    }
+  </script>
+</body>
+</html>
