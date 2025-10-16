@@ -2,200 +2,213 @@
 <html lang="vi">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <meta name="description" content="Giới thiệu trang web mới — nhanh, đẹp và sẵn sàng để chia sẻ." />
-  <title>Giới thiệu — Trang web mới</title>
-
-  <!-- Styles: đơn file để dán nhanh -->
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Nhựt Vân — Chớp đẹp mắt</title>
   <style>
     :root{
-      --bg:#0f1724; --card:#0b1220; --muted:#9aa4b2; --accent:#06b6d4;
-      --glass: rgba(255,255,255,0.04);
-      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      --bg1:#0f0c29; /* dark */
+      --bg2:#302b63; /* purple */
+      --accent1:#ff6b6b; /* coral */
+      --accent2:#ffd166; /* warm yellow */
+      --accent3:#6bf0ff; /* cyan */
+      --glow: 0 0 20px rgba(107,240,255,0.12), 0 0 40px rgba(255,107,107,0.06);
+      --font-size: clamp(36px, 8vw, 120px);
+      font-family: 'Poppins', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
     }
-    *{box-sizing:border-box}
+    html,body{height:100%;}
     body{
-      margin:0; background:linear-gradient(180deg,#071029 0%, #0b1220 100%); color:#e6eef6;
-      -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
+      margin:0;
+      display:grid;
+      place-items:center;
+      background: radial-gradient(1200px 600px at 10% 20%, rgba(255,107,107,0.08), transparent),
+                  radial-gradient(800px 400px at 90% 80%, rgba(107,240,255,0.06), transparent),
+                  linear-gradient(180deg,var(--bg1),var(--bg2));
+      overflow:hidden;
+      color:white;
     }
-    .container{max-width:1100px;margin:40px auto;padding:24px;}
-    .hero{
-      display:grid; grid-template-columns: 1fr 420px; gap:28px; align-items:center;
-      background:linear-gradient(135deg, rgba(6,182,212,0.06), transparent);
-      padding:28px; border-radius:12px; box-shadow:0 6px 30px rgba(2,6,23,0.6);
-      backdrop-filter: blur(6px);
-    }
-    h1{margin:0 0 8px;font-size:32px;line-height:1.05}
-    p.lead{margin:0;color:var(--muted)}
-    .btns{margin-top:18px}
-    .btn{display:inline-block;padding:10px 16px;border-radius:8px;text-decoration:none;color:#07203a;font-weight:600}
-    .btn-primary{background:var(--accent);box-shadow:0 6px 18px rgba(6,182,212,0.12)}
-    .btn-ghost{background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--muted)}
-    .card{background:var(--card);padding:18px;border-radius:10px}
-    .screenshot{
-      height:320px;border-radius:8px;background:
-      linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.2));
-      display:flex;align-items:center;justify-content:center;color:var(--muted);
-      border:1px solid rgba(255,255,255,0.02);
-      font-size:14px;
-    }
-    .features{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:18px}
-    .feature{padding:12px;border-radius:8px;background:var(--glass);text-align:center}
-    .feature h4{margin:6px 0;color:#e6eef6}
-    footer{margin-top:20px;color:var(--muted);font-size:13px;text-align:center}
 
-    /* responsive */
-    @media (max-width:880px){
-      .hero{grid-template-columns:1fr; padding:18px}
-      .screenshot{height:220px}
-      .features{grid-template-columns:repeat(2,1fr)}
+    /* Container */
+    .wrap{
+      text-align:center;
+      padding:40px;
     }
-    @media (max-width:520px){ .features{grid-template-columns:1fr} h1{font-size:24px} }
-    /* small utilities */
-    .muted{color:var(--muted)}
-    .share{margin-left:8px;padding:8px 10px;border-radius:8px;background:rgba(255,255,255,0.02);color:var(--muted);border:1px solid rgba(255,255,255,0.02)}
-    input,textarea{width:100%;padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:inherit}
-    .form-row{display:flex;gap:10px}
-    .form-row > *{flex:1}
-    .small{font-size:13px;color:var(--muted);margin-top:8px}
+
+    /* Main text */
+    .name{
+      position:relative;
+      display:inline-block;
+      font-weight:800;
+      font-size:var(--font-size);
+      line-height:0.9;
+      letter-spacing: -1px;
+      text-transform:capitalize;
+    }
+
+    /* Gradient base and clipping */
+    .name .text{
+      position:relative;
+      background: linear-gradient(90deg,var(--accent1),var(--accent2) 40%, var(--accent3));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      filter: drop-shadow(0 6px 20px rgba(0,0,0,0.6));
+    }
+
+    /* Neon outer glow */
+    .name::after{
+      content: attr(data-text);
+      position:absolute;
+      inset:0;
+      z-index:-1;
+      color:transparent;
+      -webkit-text-stroke: 1px rgba(255,255,255,0.06);
+      text-shadow: 0 6px 30px rgba(107,240,255,0.08), 0 0 30px rgba(255,107,107,0.06);
+      opacity:0.8;
+      transform:translateZ(0);
+      filter: blur(10px);
+      mix-blend-mode: screen;
+    }
+
+    /* Shimmer band */
+    .name .shimmer{
+      position:absolute;
+      left:-30%;
+      top:0;
+      height:100%;
+      width:60%;
+      transform:skewX(-20deg) translateX(-100%);
+      background: linear-gradient(90deg, rgba(255,255,255,0), rgba(255,255,255,0.95), rgba(255,255,255,0));
+      pointer-events:none;
+      animation: shimmer 2.8s linear infinite;
+      mix-blend-mode:overlay;
+    }
+    @keyframes shimmer{ to{ transform:skewX(-20deg) translateX(250%); } }
+
+    /* Flicker effect (randomized via CSS) */
+    .name.flicker{ animation: flickerBoth 3.6s linear infinite; }
+    @keyframes flickerBoth{
+      0% { opacity:1; text-shadow: 0 0 24px rgba(255,107,107,0.25); }
+      8% { opacity:0.85; }
+      10% { opacity:1; text-shadow: 0 0 28px rgba(255,215,102,0.28); }
+      30% { opacity:0.95; }
+      32% { opacity:0.6; text-shadow: 0 0 6px rgba(255,107,107,0.08); }
+      60% { opacity:1; }
+      100%{ opacity:1; }
+    }
+
+    /* Subtle underline pulse */
+    .underline{
+      height:6px;
+      background: linear-gradient(90deg,var(--accent1),var(--accent3));
+      margin:14px auto 0;
+      border-radius:999px;
+      width:50%;
+      opacity:0.9;
+      animation: pulse 2.2s ease-in-out infinite;
+      transform-origin:center;
+    }
+    @keyframes pulse{ 0%{ transform:scaleX(0.9); opacity:0.85 } 50%{ transform:scaleX(1.05); opacity:1 } 100%{ transform:scaleX(0.9); opacity:0.85 } }
+
+    /* Sparkles container */
+    .sparks{ position:absolute; inset:0; pointer-events:none; }
+    .spark{
+      position:absolute;
+      width:8px; height:8px;
+      border-radius:50%;
+      opacity:0;
+      transform:translate(-50%,-50%) scale(0.6);
+      box-shadow:0 0 10px rgba(255,255,255,0.9);
+      animation: sparkFly 1.6s forwards ease-out;
+      mix-blend-mode:screen;
+    }
+    @keyframes sparkFly{
+      0%{ opacity:0; transform:translate(-50%,-50%) scale(0.2); }
+      10%{ opacity:1; }
+      80%{ opacity:0.7; transform:translate(var(--dx), var(--dy)) scale(1.1); }
+      100%{ opacity:0; transform:translate(calc(var(--dx)*1.2), calc(var(--dy)*1.2)) scale(0.4); }
+    }
+
+    /* Controls */
+    .controls{ position:fixed; left:10px; bottom:10px; backdrop-filter: blur(6px); background:rgba(255,255,255,0.03); padding:8px 10px; border-radius:10px; font-size:13px; }
+    .controls button{ background:transparent; border:1px solid rgba(255,255,255,0.08); color:#fff; padding:6px 8px; border-radius:8px; cursor:pointer; margin-right:8px; }
+    .controls label{ margin-left:8px; font-size:13px; opacity:0.9 }
+
+    /* Responsive tweaks */
+    @media (max-width:520px){
+      .name{ font-weight:900 }
+      .underline{ width:70% }
+    }
   </style>
 </head>
 <body>
-  <div class="container">
-    <div class="hero" role="region" aria-label="Giới thiệu trang web mới">
-      <div>
-        <h1>Tên Trang Web <span class="muted">— ra mắt</span></h1>
-        <p class="lead">Chào mừng bạn đến với trang web mới được thiết kế để giới thiệu dịch vụ, sản phẩm và kết nối với khách hàng. Nhanh, đẹp và sẵn sàng để xuất bản.</p>
-
-        <div class="btns">
-          <a id="openSite" class="btn btn-primary" href="#" target="_blank" rel="noopener">Mở trang</a>
-          <button id="copyLink" class="share" title="Sao chép liên kết">Sao chép liên kết</button>
-          <a id="github" class="btn btn-ghost" href="#" target="_blank" rel="noopener">Xem mã nguồn</a>
-        </div>
-
-        <div class="card" style="margin-top:18px">
-          <strong>Thông tin nhanh</strong>
-          <div class="small">
-            - Tên: Trang Web Mẫu<br>
-            - Mục tiêu: Giới thiệu & liên hệ<br>
-            - Trạng thái: Sẵn sàng xuất bản
-          </div>
-
-          <div class="features" style="margin-top:12px">
-            <div class="feature">
-              <div style="font-size:20px">⚡</div>
-              <h4>Hiệu năng</h4>
-              <div class="muted">Tải nhanh, tối ưu</div>
-            </div>
-            <div class="feature">
-              <div style="font-size:20px">🎨</div>
-              <h4>Giao diện</h4>
-              <div class="muted">Đẹp & Responsive</div>
-            </div>
-            <div class="feature">
-              <div style="font-size:20px">🔗</div>
-              <h4>Chia sẻ</h4>
-              <div class="muted">Liên kết, mạng xã hội</div>
-            </div>
-          </div>
-        </div>
-
-        <div style="margin-top:14px" class="card">
-          <strong>Liên hệ nhanh</strong>
-          <form id="contactForm" onsubmit="return sendContact(event)" novalidate>
-            <div class="form-row" style="margin-top:10px">
-              <input id="name" placeholder="Tên của bạn" required />
-              <input id="email" placeholder="Email" type="email" required />
-            </div>
-            <div style="margin-top:10px">
-              <textarea id="message" rows="4" placeholder="Tin nhắn..." required></textarea>
-            </div>
-            <div style="margin-top:10px;display:flex;gap:10px">
-              <button type="submit" class="btn btn-primary">Gửi</button>
-              <button type="button" class="btn btn-ghost" onclick="resetForm()">Xóa</button>
-            </div>
-            <div id="formStatus" class="small" aria-live="polite"></div>
-          </form>
-        </div>
-
-      </div>
-
-      <aside>
-        <div class="screenshot card" aria-hidden="false">
-          <div style="text-align:center">
-            <div style="font-weight:600">Ảnh demo / ảnh bìa</div>
-            <div class="muted" style="margin-top:8px">Thay bằng ảnh chụp màn hình hoặc GIF</div>
-          </div>
-        </div>
-
-        <div class="card" style="margin-top:12px;text-align:center">
-          <strong>Kết nối</strong>
-          <div class="small" style="margin-top:8px">
-            <a href="#" style="color:var(--accent);text-decoration:none">Twitter</a> ·
-            <a href="#" style="color:var(--accent);text-decoration:none">Facebook</a> ·
-            <a href="#" style="color:var(--accent);text-decoration:none">LinkedIn</a>
-          </div>
-        </div>
-      </aside>
+  <div class="wrap">
+    <div class="name flicker" id="nhutvan" data-text="Nhựt Vân">
+      <span class="text">Nhựt <span style="color:transparent"> </span>Vân</span>
+      <div class="shimmer" aria-hidden="true"></div>
     </div>
-
-    <footer>
-      © <span id="year"></span> Tên Trang Web • Thiết kế mẫu — Tùy chỉnh theo nhu cầu của bạn.
-    </footer>
+    <div class="underline" aria-hidden="true"></div>
   </div>
 
-  <!-- JS nhỏ để tương tác -->
+  <div class="sparks" id="sparks"></div>
+
+  <div class="controls" title="Tùy chỉnh hiệu ứng">
+    <button id="toggleSpark">Tắt/Tắt tia</button>
+    <button id="regen">Tạo lại tia</button>
+    <label><input type="checkbox" id="slowFlick"> Chớp chậm</label>
+  </div>
+
   <script>
-    // Cấu hình nhanh: thay đổi link trang chính và link mã nguồn
-    const siteUrl = "https://example.com"; // <- đổi thành link trang của bạn
-    const sourceUrl = "https://github.com/your/repo"; // <- đổi nếu có
+    const sparks = document.getElementById('sparks');
+    const nameEl = document.getElementById('nhutvan');
+    let sparkOn = true;
 
-    document.getElementById('openSite').href = siteUrl;
-    document.getElementById('github').href = sourceUrl;
-    document.getElementById('year').textContent = new Date().getFullYear();
-
-    // Sao chép liên kết
-    document.getElementById('copyLink').addEventListener('click', async () => {
-      try {
-        await navigator.clipboard.writeText(siteUrl);
-        showTemp("Đã sao chép liên kết vào clipboard.");
-      } catch (e) {
-        showTemp("Không thể sao chép tự động. Hãy sao chép thủ công: " + siteUrl);
+    // Create randomized sparkles around the text
+    function makeSparks(n=14){
+      sparks.innerHTML = '';
+      const r = nameEl.getBoundingClientRect();
+      for(let i=0;i<n;i++){
+        const s = document.createElement('div');
+        s.className='spark';
+        // random start point along text bounding box
+        const sx = r.left + Math.random()*r.width;
+        const sy = r.top + Math.random()*r.height;
+        // random direction vector
+        const dx = (Math.random()-0.5)*160 + (Math.random()*60);
+        const dy = -(Math.random()*120 + 10);
+        s.style.left = sx + 'px';
+        s.style.top = sy + 'px';
+        s.style.setProperty('--dx', dx+'px');
+        s.style.setProperty('--dy', dy+'px');
+        // random color between accents
+        const c = Math.random();
+        if(c<0.45) s.style.background = 'radial-gradient(circle, rgba(107,240,255,1), rgba(107,240,255,0.2))';
+        else if(c<0.8) s.style.background = 'radial-gradient(circle, rgba(255,107,107,1), rgba(255,107,107,0.18))';
+        else s.style.background = 'radial-gradient(circle, rgba(255,209,102,1), rgba(255,209,102,0.18))';
+        // stagger animation delay
+        s.style.animationDelay = (Math.random()*0.9)+'s';
+        s.style.width = (6 + Math.random()*8)+'px';
+        s.style.height = s.style.width;
+        sparks.appendChild(s);
       }
+    }
+
+    // Initial sparks after layout
+    window.addEventListener('load', ()=>{ makeSparks(18); });
+    window.addEventListener('resize', ()=>{ if(sparkOn) makeSparks(12); });
+
+    // Controls
+    document.getElementById('toggleSpark').addEventListener('click', ()=>{
+      sparkOn = !sparkOn;
+      sparks.style.display = sparkOn ? 'block' : 'none';
+      document.getElementById('toggleSpark').textContent = sparkOn ? 'Tắt tia' : 'Bật tia';
+    });
+    document.getElementById('regen').addEventListener('click', ()=>{ makeSparks(16); });
+    document.getElementById('slowFlick').addEventListener('change',(e)=>{
+      if(e.target.checked) nameEl.style.animationDuration='6s'; else nameEl.style.animationDuration='3.6s';
     });
 
-    function showTemp(text){
-      const s = document.getElementById('formStatus');
-      s.textContent = text;
-      setTimeout(()=>{ if(s.textContent === text) s.textContent = ""; }, 3500);
-    }
-
-    // Form liên hệ: gửi bằng mailto (không cần backend) hoặc hiển thị JSON để copy
-    function sendContact(e){
-      e.preventDefault();
-      const name = document.getElementById('name').value.trim();
-      const email = document.getElementById('email').value.trim();
-      const message = document.getElementById('message').value.trim();
-      if(!name || !email || !message){
-        showTemp("Vui lòng điền đầy đủ thông tin.");
-        return false;
-      }
-
-      // Tùy chọn 1: mở mail client
-      const subject = encodeURIComponent("Liên hệ từ " + name);
-      const body = encodeURIComponent("Tên: " + name + "\\nEmail: " + email + "\\n\\n" + message);
-      window.location.href = "mailto:hello@example.com?subject=" + subject + "&body=" + body;
-
-      // Tùy chọn 2: nếu muốn, hiển thị JSON để copy (thay backend)
-      // const payload = {name, email, message, site: siteUrl, date: new Date().toISOString()};
-      // showTemp("Dữ liệu liên hệ (copy): " + JSON.stringify(payload));
-      return false;
-    }
-
-    function resetForm(){
-      document.getElementById('contactForm').reset();
-      showTemp("Đã xóa form.");
-    }
+    // small auto-regenerate to keep the scene lively
+    setInterval(()=>{ if(sparkOn) makeSparks(10 + Math.floor(Math.random()*12)); }, 4200);
   </script>
 </body>
 </html>
